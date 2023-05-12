@@ -207,7 +207,7 @@ input:focus, select:focus {
   border: solid 1px var(--primaryTxt);
 }
 
-button {
+/* button {
   background-color: white;
   color: black;
   border-radius: 10em;
@@ -227,7 +227,7 @@ button:hover, .card:hover{
 button:active{
   transform: translateY(2px) translateX(1px);
   box-shadow: 0 0 0 0 black;
-}
+} */
 
 .card {
   border-radius: 0.5rem;
@@ -341,3 +341,4 @@ color: var(--secondaryTxt);
   width:250px; 
   height:auto;
 }
+

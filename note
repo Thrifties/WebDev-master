@@ -115,3 +115,43 @@
             </div>
         </form>
     </div>
+
+
+ <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="width: 25rem;">
+            <img src="data:image;base64,'.$image.'" class="card-img-top" alt="..." id="toolImage">
+            <div class="card-body">
+                    <h5 class="card-title">'.$toolName.'</h5>
+                    <p class="card-text" id="desc">'.$description.'</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Developer: '.$developer.'</li>
+                <li class="list-group-item">Release Date: '.$releaseDate.'</li>
+                <li class="list-group-item">Category: '.$category.'</li>
+                <li class="list-group-item">Subscription Type: '.$subscriptionType.'</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Read More...</a>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
