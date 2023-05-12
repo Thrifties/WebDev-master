@@ -1,0 +1,147 @@
+ <div class="card" onclick = "cardDisplay(this)">
+                    <div class="image"> 
+                        <img class="uimg" src="data:image;base64,'. $image . '"></div>  
+                    <div class="toolName"><a href="">' . $toolName . '</a></div>
+                    <div>Developer: ' . $developer . ' </div>
+                    <div>Release Date: ' . $releaseDate . '</div>
+                    <div>Category: ' . $category . '</div>
+                    <div>Subscription Type: ' . $subscriptionType . '</div> 
+                    <div id="desc">Description: ' . $description . '</div>  
+                    <div id="readMore">Read more...</div>  
+                </div>
+
+<body>
+
+    <nav><a href="index.php"><button>Back</button></a></nav>
+
+    <div class="container-update">
+        <form class="create" method="post" action="loadUpdate.php">
+            <h1>Update Info</h1>
+            <div class="field">
+
+                <label>AI Tool:</label>
+                <select name="AITool" id="AITool" onchange="Display(this.value)" required>
+                    <option selected disabled>Select</option>
+                    <?php
+                    $xml = new DOMDocument('1.0');
+                    $xml->load('AITools.xml');
+                    $AIs = $xml->getElementsByTagName('AI');
+
+                    foreach ($AIs as $AI) {
+                        $title = $AI->getElementsByTagName('ToolName')->item(0)->nodeValue;
+                        echo '<option>' . $title . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            <div id="toolData">
+                <div class="field">
+                    <label>Developer:</label>
+                    <input name="Developer" id="Developer" type="text" required>
+                </div>
+                <div class="field">
+                    <label for="ReleaseDate">Release Date:</label>
+                    <input name="ReleaseDate" id="ReleaseDate" type="text" required>
+                </div>
+                <div class="field">
+                    <label for="Category">Category:</label>
+                    <input name="Category" id="Category" type="text" required>
+                </div>
+                <div class="field">
+                    <label for="SubscriptionType">Subscription Type:</label>
+                    <select name="SubscriptionType" id="SubscriptionType" required>
+                        <option selected disabled>Select</option>
+                        <option value="Free">Free</option>
+                        <option value="Paid">Paid</option>
+                        <option value="Freemium">Freemium</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="Description">Description:</label>
+                    <input name="Description" id="Description" type="text" required>
+                </div>
+                <div class='field' id='imageContainer'>
+
+                    <input type='file' id='Image' name='Image' style='display: none;' onchange='PreviewImage()'>
+
+                </div>
+            </div>
+            <div class="createBtn">
+                <button id="update" name="update" type="button">Update</button>
+            </div>
+    </div>
+
+
+
+    </form>
+    </div>
+
+    <nav><a href="index.php"><button>Back</button></a></nav>
+    <div class="container-delete">
+        <form class="delete" action="loadDelete.php" method="post">
+            <h1>Delete AI Tool</h1>
+            <div class="field">
+                <label for="ToolName">AI: </label>
+                <select name="ToolName" id="ToolName" onchange="Display(this.value)" required>
+                    <option selected disabled>Select</option>
+                    <?php
+                                $xml = new DOMDocument('1.0');
+                                $xml->load('AITools.xml');
+                                $AIs = $xml->getElementsByTagName('AI');
+    
+                                foreach($AIs as $AI){
+                                    $title = $AI->getElementsByTagName('ToolName')->item(0)->nodeValue;
+                                    echo'<option>'. $title .'</option>';
+                                }
+                            ?>
+                </select>
+    
+    
+            </div>
+            <div id="toolData"></div>
+            <br><br>
+            <div class="createBtn">
+                <button id="delete" name="delete" type="button">Delete</button>
+            </div>
+        </form>
+    </div>
+
+
+ <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="width: 25rem;">
+            <img src="data:image;base64,'.$image.'" class="card-img-top" alt="..." id="toolImage">
+            <div class="card-body">
+                    <h5 class="card-title">'.$toolName.'</h5>
+                    <p class="card-text" id="desc">'.$description.'</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Developer: '.$developer.'</li>
+                <li class="list-group-item">Release Date: '.$releaseDate.'</li>
+                <li class="list-group-item">Category: '.$category.'</li>
+                <li class="list-group-item">Subscription Type: '.$subscriptionType.'</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Read More...</a>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
