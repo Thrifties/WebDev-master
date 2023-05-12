@@ -1,0 +1,1 @@
+const hiddenElements = document.querySelectorAll('.card');

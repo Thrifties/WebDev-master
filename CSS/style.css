@@ -1,0 +1,25 @@
+:root {
+  --bgColor: #22272B;
+  --secondaryTxt: #FFBE00;
+  --primaryTxt: #FFFFFF;
+}
+
+#uploadPreview{
+  width:250px; 
+  height:auto;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: var(--primaryTxt);
+}
+
+.crudLink{
+  transition: color .5s;
+  animation-timing-function: ease-in-out;
+}
+
+.crudLink:hover{
+  color: var(--secondaryTxt)
+}
