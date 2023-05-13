@@ -10,3 +10,35 @@
     Side Note: Di ko pa tapos yung UI kasi balak ko pa lagyan ng modal yan pero ayon parang mga 70% na siguro yung system natin
     
 -->        
+
+<div class='field'>
+                <label>Developer:</label>
+                <input name='Developer' id='Developer' type='text' value='$Developer' required>
+            </div>
+            <div class='field'>
+                <label for='ReleaseDate'>Release Date:</label>
+                <input name='ReleaseDate' id='ReleaseDate' type='text' value='$ReleaseDate' required>
+            </div>
+            <div class='field'>
+                <label for='Category'>Category:</label>
+                <input name='Category' id='Category' type='text' value='$Category' required>
+            </div>
+            <div class='field'>
+                <label for='SubscriptionType'>Subscription Type:</label>
+                <select name='SubscriptionType' id='SubscriptionType' required> 
+                    <option value='Free' ". (($SubscriptionType == 'Free') ? 'selected' : '') .">Free</option>
+                    <option value='Paid' ". (($SubscriptionType == 'Paid') ? 'selected' : '') .">Paid</option>
+                    <option value='Freemium' ". (($SubscriptionType == 'Freemium') ? 'selected' : '') .">Freemium</option>
+                </select>
+            </div>
+            <div class='field'>
+                <label for='Description'>Description:</label>
+                <input name='Description' id='Description' type='text' value='$Description' required>
+            </div>
+            
+            <div class='field' id='imageContainer'>
+                <label for='Image'>
+                <img id='uploadPreview' class='anime-img' src='data:image;base64,".$Image."'>
+                </label>
+                <input type='file' id='Image' name='Image' style='display: none;' onchange='PreviewImage()'>
+            </div>
