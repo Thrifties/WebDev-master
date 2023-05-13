@@ -33,7 +33,7 @@
                     ?>
                     </select>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6" id="toolData">
                     <label for="Developer" class="form-label">Developer</label>
                     <input type="text" class="form-control" id="Developer" name="Developer" style="text-transform: capitalize;">
                 </div>
