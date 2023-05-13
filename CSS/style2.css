@@ -166,20 +166,16 @@ color: var(--secondaryTxt);
 }
 
 #particles-js{
-  height: 100%;
+  height: 200%;
   background-color: #212529;
-  background-size:contain;
-  background-repeat: repeat;
+  background-size:fill;
+  background-repeat: repeat-y;
+  overflow-y: auto;
 }
 
 #container, #particle-js {
   width: 100vw;
-  position: absolute;
+  position: absolute; 
   left: 0;
   top: 0;
 }
-
-#container {
-  z-index: 10;
-}
-
