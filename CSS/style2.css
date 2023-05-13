@@ -15,10 +15,6 @@ body {
   height: 100vh;
 }
 
-#particles-js{
-  height: 100%;
-  background: #414141;
-}
 
 .container {
   display: grid;
@@ -137,14 +133,6 @@ color: var(--secondaryTxt);
 
 /****************************************************************/
 
-.container-create, .container-update, .container-delete{
-  border: 1px solid var(--primaryTxt);
-  border-radius: 5px;
-  width: fit-content;
-  padding: 50px;
-  margin: auto;
-}
-
 .field {
   display: flex;
   align-items: center;
@@ -176,3 +164,22 @@ color: var(--secondaryTxt);
   width:250px; 
   height:auto;
 }
+
+#particles-js{
+  height: 100%;
+  background-color: #212529;
+  background-size:contain;
+  background-repeat: repeat;
+}
+
+#container, #particle-js {
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#container {
+  z-index: 10;
+}
+

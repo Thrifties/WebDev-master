@@ -15,11 +15,12 @@ a:visited {
   color: var(--primaryTxt);
 }
 
-.crudLink{
+.crudLink i{
+  color: #A9B5BD;
   transition: color .5s;
   animation-timing-function: ease-in-out;
 }
 
-.crudLink:hover{
+.crudLink i:hover{
   color: var(--secondaryTxt)
 }
