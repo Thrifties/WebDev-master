@@ -31,19 +31,22 @@
             $Description = $AI->getElementsByTagName("Description")->item(0)->nodeValue;
             $Image = $AI->getElementsByTagName("Image")->item(0)->nodeValue;
 
+
+
         //lines 20-40 will display the data of the selected AI Tool
         echo '
+        
             <div class="col-lg-6">
                     <label for="Developer" class="form-label">Developer</label>
-                    <input type="text" class="form-control" id="Developer" name="Developer" value='.$Developer.'>
+                    <input type="text" class="form-control" id="Developer" name="Developer" value="'.$Developer.'">
                 </div>
                 <div class="col-lg-6">
                     <label for="ReleaseDate" class="form-label">Release Date:</label>
-                    <input type="date" class="form-control" id="ReleaseDate" name="ReleaseDate" value='.$ReleaseDate.'>
+                    <input type="date" class="form-control" id="ReleaseDate" name="ReleaseDate" value="'.$ReleaseDate.'">
                 </div>
                 <div class="col-lg-6">
                     <label for="Category" class="form-label">Category</label>
-                    <input type="text" class="form-control" id="Category" name="Category" value='.$Category.'>
+                    <input type="text" class="form-control" id="Category" name="Category" value="'.$Category.'">
                 </div>
                 
                 <div class="col-lg-6">
@@ -58,17 +61,20 @@
 
                 <div class="mb-3">
                     <label for="Description" class="form-label">Description:</label>
-                    <textarea class="form-control" id="Description" rows="3" name="Description" value='.$Description.'></textarea>
+                    <textarea class="form-control" id="Description" rows="3" name="Description" >'.$Description.'</textarea>
                 </div>
 
                 <div class="mb-3">  
                 <label for="Image" class="form-label">Upload Image:</label>
-                <input class="form-control" type="file" id="Image" name="Image" onchange="PreviewImage()" src="data:image;base64,'.$Image.'">
+                <br>
+                <div class="d-flex justify-content-center">
+                    <img id="uploadPreview" class="anime-img" src="data:image;base64,'.$Image.'">
+                </div>
+                <br>
+                <input class="form-control" type="file" id="Image" name="Image" onchange="PreviewImage()">
                 </div>
                 
-                <div class="d-flex justify-content-center">
-                    <img src="" alt="" id="uploadPreview">
-                </div>
+                
         ';
             break;
         }

@@ -63,13 +63,13 @@
                     <li class="list-group-item">Subscription Type: '.$subscriptionType.'</li>
                 </ul>
                 <div class="card-body">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop_'.str_replace(' ', '_', $toolName).'">
                     Read More
                     </button>
                 </div>
                 </div>
 
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="staticBackdrop_'.str_replace(' ', '_', $toolName).'" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -196,5 +196,5 @@
         }
 
                 
-		</scrip>
+		</script>
     </html>

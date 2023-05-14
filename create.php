@@ -18,9 +18,9 @@
     <div id="particles-js"></div>
     <script src="particles.js"></script>
     <script src="app.js"></script>
-    <div class="container-lg m-2" >
+    <div class="container-lg m-2">
         <div class="container-md w-25 border p-4 rounded position-absolute top-50 start-50 translate-middle" id="form-container">
-            <form class="row g-3" method="post" action="loadCreate.php" id="box">
+            <form class="row g-3" method="post" action="loadCreate.php">
                 <h2><a class="crudLink" href="index.php"><i class='bx bxs-chevron-left'></i></a>Add AI</h2>
                 <div class="col-md-12">
                     <label for="AITool" class="form-label">AI Tool:</label>
@@ -89,8 +89,6 @@
 
                 for (var i = 0; i < tools.length; i++) {
                     var toolName = tools[i].getElementsByTagName("ToolName")[0].childNodes[0].nodeValue.toLowerCase();
-                    console.log(tools.length);
-                    console.log(toolName);
                     if (toolName === toolNameValue) {
                         Swal.fire({
                             title: "Invalid Tool Name",
