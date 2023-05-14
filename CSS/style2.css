@@ -15,15 +15,36 @@ body {
   height: 100vh;
 }
 
-#result-box, .result-list {
+
+#result-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #a0a0a088;
+  border-radius: 5px;
   position: absolute;
-  width: 15em;
+  width: 13em;  
   right: 55px;
 }
 
-li {
-    background-color: #FFBE00;
+#search-result {
+  padding: 1em;
+}
+
+.search-list-right a {
+  transition: color .5s;
+  animation-timing-function: ease-in-out;
+}
+
+.search-list-right a:hover {
+  color: var(--secondaryTxt);
+}
+
+
+#result-box li {
+    width: 100%;
     list-style-type: none;
+    cursor: pointer;
+    margin-bottom: 12px;
 }
 
 

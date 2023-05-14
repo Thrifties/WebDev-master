@@ -13,7 +13,7 @@
         if($search == strtolower(substr($ToolName, 0, strlen($search)))){                       //Determines whether if the item that we are looking for is inside our XML file
             if($output == "<ul>") {                                                             //Lines 17-41 will display the data that we are looking for from the XML file                                
                 $output = "
-                <li class='result-list'>
+                <li class='result-list' id='result-list'>
                     <div class='search-list'>
                         <div class='search-list-right'>
                             <a href='loadSearchSuggestion.php?q=".$ToolName."'><span class='search-list-title'>".$ToolName."</span></a><br>

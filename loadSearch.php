@@ -25,6 +25,8 @@
             $Developer = $AI->getElementsByTagName('Developer')->item(0)->nodeValue;
             $ReleaseDate = $AI->getElementsByTagName('ReleaseDate')->item(0)->nodeValue;
             $Category = $AI->getElementsByTagName('Category')->item(0)->nodeValue;
+            $description = $AI ->getElementsByTagName("Description")->item(0)->nodeValue;
+            $image = $AI->getElementsByTagName('Image')->item(0)->nodeValue;
             
             $Tools = strtolower($ToolName);
             $Dev = strtolower($Developer);
@@ -39,13 +41,22 @@
                 $flag++;
                 $SubscriptionType = $AI->getElementsByTagName('SubscriptionType')->item(0)->nodeValue;
                 echo'
-                        <div class="AI">
-                            <h3 class="title">' ."Tool Name: ". $ToolName .'</h3>
-                            <div class="genre">' ."Developer: ". $Developer .'</div>
-                            <div class="releaseYear">' ."Release Date: ". $ReleaseDate .'</div>
-                            <div class="console">' ."Category: ". $Category .'</div>
-                            <div class="director">' ."Subscription Type: ". $SubscriptionType .'</div>
-                        </div>
+                        <div class="card" style="width: 25rem;">
+                <img src="data:image;base64,'.$image.'" class="card-img-top" alt="..." id="toolImage">
+                <div class="card-body">
+                    <h5 class="card-title">'.$toolName.'</h5>
+                    <p class="card-text" id="desc">'.$description.'</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Developer: '.$Developer.'</li>
+                    <li class="list-group-item">Release Date: '.$ReleaseDate.'</li>
+                    <li class="list-group-item">Category: '.$Category.'</li>
+                    <li class="list-group-item">Subscription Type: '.$SubscriptionType.'</li>
+                </ul>
+                <div class="card-body">
+                    <a href="index.php" class="btn btn-primary">Return</a>
+                </div>
+                </div>
                     ';
             }
         }

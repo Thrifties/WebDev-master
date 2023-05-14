@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS\style2.css">
+    <link rel="stylesheet" href="CSS\style.css">
+    <link rel="stylesheet" href="boxicons-2.1.4/css/boxicons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+	<script src="jquery-ui.min.js"></script>
+	<script src="sweetalert.min.js"></script>
     <title>Search Result</title>
 </head>
-<body>
-    <div class="buttons">
-        <button><a href="index.php">Back</a></button>
-    </div>
+<body class="bg-dark" data-bs-theme="dark">
+    <div id="particles-js"></div>
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
     <div class="result">
     <?php
         $xml = new DOMDocument("1.0");
@@ -26,6 +32,10 @@
             $Developer = $AI->getElementsByTagName('Developer')->item(0)->nodeValue;
             $ReleaseDate = $AI->getElementsByTagName('ReleaseDate')->item(0)->nodeValue;
             $Category = $AI->getElementsByTagName('Category')->item(0)->nodeValue;
+            $description = $AI ->getElementsByTagName("Description")->item(0)->nodeValue;
+                $image = $AI->getElementsByTagName('Image')->item(0)->nodeValue;
+            
+            
             
             $Tools = strtolower($ToolName);
             $Dev = strtolower($Developer);
@@ -38,15 +48,26 @@
                 ($search == $Cat)
             ){
                 $flag++;
+                $description = $AI ->getElementsByTagName("Description")->item(0)->nodeValue;
+                $image = $AI->getElementsByTagName('Image')->item(0)->nodeValue;
                 $SubscriptionType = $AI->getElementsByTagName('SubscriptionType')->item(0)->nodeValue;
                 echo'
-                        <div class="AI">
-                            <h3 class="title">' ."Tool Name: ". $ToolName .'</h3>
-                            <div class="genre">' ."Developer: ". $Developer .'</div>
-                            <div class="releaseYear">' ."Release Date: ". $ReleaseDate .'</div>
-                            <div class="console">' ."Category: ". $Category .'</div>
-                            <div class="director">' ."Subscription Type: ". $SubscriptionType .'</div>
-                        </div>
+                <div class="card position-absolute top-50 start-50 translate-middle" style="width: 25rem;">
+                <img src="data:image;base64,'.$image.'" class="card-img-top" alt="..." id="toolImage">
+                <div class="card-body">
+                    <h5 class="card-title">'.$ToolName.'</h5>
+                    <p class="card-text" id="desc">'.$description.'</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Developer: '.$Developer.'</li>
+                    <li class="list-group-item">Release Date: '.$ReleaseDate.'</li>
+                    <li class="list-group-item">Category: '.$Category.'</li>
+                    <li class="list-group-item">Subscription Type: '.$SubscriptionType.'</li>
+                </ul>
+                <div class="card-body">
+                    <a href="index.php" class="btn btn-primary">Return</a>
+                </div>
+                </div>
                     ';
             }
         }
