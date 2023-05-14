@@ -1,44 +1,11 @@
-
- <!-- 
-
-    !Not working: Di nagana yung pang check kung nageexist ba yung AI Tool sa create.php
-
-    !May something sa delete kapag nagdelete ka. Try mo na lang HAHAHHAHA 
-
-    !Update function: Hindi binabalik yung data kung ano dapat iupdate
-
-    Side Note: Di ko pa tapos yung UI kasi balak ko pa lagyan ng modal yan pero ayon parang mga 70% na siguro yung system natin
-    
--->        
-
-<div class='field'>
-                <label>Developer:</label>
-                <input name='Developer' id='Developer' type='text' value='$Developer' required>
-            </div>
-            <div class='field'>
-                <label for='ReleaseDate'>Release Date:</label>
-                <input name='ReleaseDate' id='ReleaseDate' type='text' value='$ReleaseDate' required>
-            </div>
-            <div class='field'>
-                <label for='Category'>Category:</label>
-                <input name='Category' id='Category' type='text' value='$Category' required>
-            </div>
-            <div class='field'>
-                <label for='SubscriptionType'>Subscription Type:</label>
-                <select name='SubscriptionType' id='SubscriptionType' required> 
-                    <option value='Free' ". (($SubscriptionType == 'Free') ? 'selected' : '') .">Free</option>
-                    <option value='Paid' ". (($SubscriptionType == 'Paid') ? 'selected' : '') .">Paid</option>
-                    <option value='Freemium' ". (($SubscriptionType == 'Freemium') ? 'selected' : '') .">Freemium</option>
-                </select>
-            </div>
-            <div class='field'>
-                <label for='Description'>Description:</label>
-                <input name='Description' id='Description' type='text' value='$Description' required>
-            </div>
-            
-            <div class='field' id='imageContainer'>
-                <label for='Image'>
-                <img id='uploadPreview' class='anime-img' src='data:image;base64,".$Image."'>
-                </label>
-                <input type='file' id='Image' name='Image' style='display: none;' onchange='PreviewImage()'>
-            </div>
+<ToolName>Replika</ToolName>
+<Developer>Eugenia Kuyda</Developer>
+<ReleaseDate>2017-07-10</ReleaseDate>
+<Category>Chatbot</Category>
+<SubscriptionType>Free</SubscriptionType>
+<Description>Replika by Eugenia Kuyda is an AI tool that uses natural language processing and machine learning
+    algorithms to create a chatbot that is personalized to you. With Replika, you can have meaningful conversations with
+    your virtual AI friend, who learns from your input and adapts to your personality over time. This tool is designed
+    to help you explore your thoughts and feelings, and even provides emotional support when you need it. Replika is an
+    ideal tool for anyone looking to improve their mental health and well-being by engaging in reflective conversations
+    with an AI companion.</Description>
