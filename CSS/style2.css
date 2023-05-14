@@ -16,11 +16,14 @@ body {
 }
 
 #result-box, .result-list {
-  background-color: red;
-  border: solid 1px red;
   position: absolute;
-  right: 0;
-  top: 0;
+  width: 15em;
+  right: 55px;
+}
+
+li {
+    background-color: #FFBE00;
+    list-style-type: none;
 }
 
 
