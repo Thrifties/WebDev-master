@@ -16,6 +16,7 @@
     <script src="app.js"></script>
     
     <div class="container-fluid g-0" id="container">
+
         <nav class="navbar sticky-top bg-dark" data-bs-theme="dark">
             <div class="container-fluid px-5">
                 <div class="d-flex gap-3">
@@ -23,6 +24,7 @@
                     <a class="crudLink" href="update.php">Update</a>
                     <a class="crudLink" href="delete.php">Delete</a>
                 </div>
+                <h2 class="display-6">List of AI Tools</h1>
                 <form class="d-flex align-items-center navbar-nav" role="search" method="post" action="loadSearch.php">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" onkeyup="showSearch(this.value)">
                 </form>
@@ -30,6 +32,7 @@
             
         </nav>
         <div id="result-box"></div>
+        
         <div class="container py-3">
             
             <?php 

@@ -76,6 +76,7 @@
 
             // Di nagana yung pagcheck ng existing AI Tool
             $("#AITool").blur(function(){
+                console.log("wew");
 
                 var toolNameInput = document.getElementById("AITool");
                 var toolNameValue = toolNameInput.value;
@@ -89,6 +90,7 @@
 
                 for (var i = 0; i < tools.length; i++) {
                     var toolName = tools[i].getElementsByTagName("ToolName")[0].childNodes[0].nodeValue.toLowerCase();
+                    console.log(toolName);
                     if (toolName === toolNameValue) {
                         Swal.fire({
                             title: "Invalid Tool Name",

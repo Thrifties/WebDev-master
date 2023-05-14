@@ -67,7 +67,7 @@
         
     }
 
-    $(document).ready(function(){
+   /*  $(document).ready(function(){
         $(document).on('click', '#update',function(){
             Swal.fire({
                 title: 'Are you sure you want to Save this changes?',
@@ -91,7 +91,7 @@
                 }
             });
         });
-    });
+    }); */
 
 
     // get input field
@@ -112,19 +112,13 @@
             //$('#delete').css({'opacity': '1', 'cursor': 'pointer', 'pointer-events': 'auto', 'background-color': '#d33', 'border-color': '#d33'});
         }
     });
-
-
-    
-
-
-
+        
         function PreviewImage() {
         var pic = new FileReader();
         pic.readAsDataURL(document.getElementById("Image").files[0]);
         
         pic.onload = function (oFREvent) {
             document.getElementById("uploadPreview").src = oFREvent.target.result;
-            console.log("g" + oFREvent.target.result);
             
         };
         };

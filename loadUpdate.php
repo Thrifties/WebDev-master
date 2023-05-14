@@ -16,13 +16,6 @@
         $xml->formatOutput = true;
         $xml-> preserveWhiteSpace = false;
         $xml->load('AITools.xml');
-
-        if(isset($_POST['Image'])){
-            echo '<script>alert("ok");</script>';
-        }
-        else {
-            echo '<script>alert("none");</script>';
-        }
         
 
         if(isset($_POST['AITool'], $_POST['Developer'], $_POST['ReleaseDate'], $_POST['Category'], $_POST['SubscriptionType'], $_POST['Description'])) {

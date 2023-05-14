@@ -1,112 +1,84 @@
- <div class="card" onclick = "cardDisplay(this)">
-                    <div class="image"> 
-                        <img class="uimg" src="data:image;base64,'. $image . '"></div>  
-                    <div class="toolName"><a href="">' . $toolName . '</a></div>
-                    <div>Developer: ' . $developer . ' </div>
-                    <div>Release Date: ' . $releaseDate . '</div>
-                    <div>Category: ' . $category . '</div>
-                    <div>Subscription Type: ' . $subscriptionType . '</div> 
-                    <div id="desc">Description: ' . $description . '</div>  
-                    <div id="readMore">Read more...</div>  
-                </div>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="CSS\style2.CSS"> -->
+    <script src="jquery-3.3.1.min.js"></script>
+	<script src="jquery-ui.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <title>Displaying Data</title>
+</head>
 <body>
+<?php 
+    $xml = new domdocument("1.0");
+    $xml ->load("AITools.xml");
+	
+	$name = $_REQUEST["name"]; 
 
-    <nav><a href="index.php"><button>Back</button></a></nav>
+	$AIs = $xml -> getElementsByTagName("AI");
 
-    <div class="container-update">
-        <form class="create" method="post" action="loadUpdate.php">
-            <h1>Update Info</h1>
-            <div class="field">
+    foreach($AIs as $AI) {
+        $ToolName = $AI->getElementsByTagName('ToolName')->item(0)->nodeValue;
+        if($name == $ToolName){
 
-                <label>AI Tool:</label>
-                <select name="AITool" id="AITool" onchange="Display(this.value)" required>
-                    <option selected disabled>Select</option>
-                    <?php
-                    $xml = new DOMDocument('1.0');
-                    $xml->load('AITools.xml');
-                    $AIs = $xml->getElementsByTagName('AI');
+            $Developer = $AI->getElementsByTagName("Developer")->item(0)->nodeValue;
+            $ReleaseDate = $AI->getElementsByTagName("ReleaseDate")->item(0)->nodeValue;
+            $Category = $AI->getElementsByTagName("Category")->item(0)->nodeValue;
+            $SubscriptionType = $AI->getElementsByTagName("SubscriptionType")->item(0)->nodeValue;
+            $Description = $AI->getElementsByTagName("Description")->item(0)->nodeValue;
+            $Image = $AI->getElementsByTagName("Image")->item(0)->nodeValue;
 
-                    foreach ($AIs as $AI) {
-                        $title = $AI->getElementsByTagName('ToolName')->item(0)->nodeValue;
-                        echo '<option>' . $title . '</option>';
-                    }
-                    ?>
-                </select>
-            </div>
-            <div id="toolData">
-                <div class="field">
-                    <label>Developer:</label>
-                    <input name="Developer" id="Developer" type="text" required>
+
+
+        //lines 20-40 will display the data of the selected AI Tool
+        echo '
+            <div class="col-lg-6">
+                    <label for="Developer" class="form-label">Developer</label>
+                    <input type="text" class="form-control" id="Developer" name="Developer" value="'.$Developer.'">
                 </div>
-                <div class="field">
-                    <label for="ReleaseDate">Release Date:</label>
-                    <input name="ReleaseDate" id="ReleaseDate" type="text" required>
+                <div class="col-lg-6">
+                    <label for="ReleaseDate" class="form-label">Release Date:</label>
+                    <input type="date" class="form-control" id="ReleaseDate" name="ReleaseDate" value="'.$ReleaseDate.'">
                 </div>
-                <div class="field">
-                    <label for="Category">Category:</label>
-                    <input name="Category" id="Category" type="text" required>
+                <div class="col-lg-6">
+                    <label for="Category" class="form-label">Category</label>
+                    <input type="text" class="form-control" id="Category" name="Category" value="'.$Category.'">
                 </div>
-                <div class="field">
-                    <label for="SubscriptionType">Subscription Type:</label>
-                    <select name="SubscriptionType" id="SubscriptionType" required>
-                        <option selected disabled>Select</option>
-                        <option value="Free">Free</option>
-                        <option value="Paid">Paid</option>
-                        <option value="Freemium">Freemium</option>
+                
+                <div class="col-lg-6">
+                    <label for="SubscriptionType" class="form-label">Subscription Type:</label>
+                    <select id="SubscriptionType" class="form-select" name="SubscriptionType">
+                    <option selected disabled>Choose...</option>
+                    <option value="Free" '. (($SubscriptionType == "Free") ? "selected" : '') .'>Free</option>
+                    <option value="Paid" '. (($SubscriptionType == "Paid") ? "selected" : '') .'>Paid</option>
+                    <option value="Freemium" '. (($SubscriptionType == "Freemium") ? "selected" : '') .'>Freemium</option>
                     </select>
                 </div>
-                <div class="field">
-                    <label for="Description">Description:</label>
-                    <input name="Description" id="Description" type="text" required>
+
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Description:</label>
+                    <textarea class="form-control" id="Description" rows="3" name="Description" >'.$Description.'</textarea>
                 </div>
-                <div class='field' id='imageContainer'>
 
-                    <input type='file' id='Image' name='Image' style='display: none;' onchange='PreviewImage()'>
-
+                <div class="mb-3">  
+                <label for="Image" class="form-label">Upload Image:</label>
+                <br>
+                <div class="d-flex justify-content-center">
+                    <img id="uploadPreview" class="anime-img" src="data:image;base64,'.$Image.'">
                 </div>
-            </div>
-            <div class="createBtn">
-                <button id="update" name="update" type="button">Update</button>
-            </div>
-    </div>
-
-
-
-    </form>
-    </div>
-
-    <nav><a href="index.php"><button>Back</button></a></nav>
-    <div class="container-delete">
-        <form class="delete" action="loadDelete.php" method="post">
-            <h1>Delete AI Tool</h1>
-            <div class="field">
-                <label for="ToolName">AI: </label>
-                <select name="ToolName" id="ToolName" onchange="Display(this.value)" required>
-                    <option selected disabled>Select</option>
-                    <?php
-                                $xml = new DOMDocument('1.0');
-                                $xml->load('AITools.xml');
-                                $AIs = $xml->getElementsByTagName('AI');
+                <br>
+                <input class="form-control" type="file" id="Image" name="Image" onchange="PreviewImage()">
+                </div>
+                
+                
+        ';
+            break;
+        }
+    }
     
-                                foreach($AIs as $AI){
-                                    $title = $AI->getElementsByTagName('ToolName')->item(0)->nodeValue;
-                                    echo'<option>'. $title .'</option>';
-                                }
-                            ?>
-                </select>
-    
-    
-            </div>
-            <div id="toolData"></div>
-            <br><br>
-            <div class="createBtn">
-                <button id="delete" name="delete" type="button">Delete</button>
-            </div>
-        </form>
-    </div>
-
-
- <!-- Button trigger modal -->
-
-<!-- Modal -->
+?>
+</body>
+</html>
